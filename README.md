@@ -145,7 +145,10 @@ catch (const char *ex)
 * [Bugs](https://bugs.mysql.com)
 
 # PS by SourDumplings
-这是为了在 Windows 下使用而建立的。需要先安装 MySQL Server、OpenSSL 和 BOOST，然后定义环境变量，分别指向 MySQL Server、OpenSSL、BOOST 对应目录：
+在安装好 MySQL Server 8 之后还需要做如下事情才能顺利使用本库。
+
+## Windows
+在 Windows 下，需要先安装 MySQL Server、OpenSSL 和 BOOST，然后定义环境变量，分别指向 MySQL Server、OpenSSL、BOOST 对应目录：
 ```bat
 PS E:\codes\mysql-connector-cpp> echo $env:BOOST_ROOT
 D:\Boost\boost_1_87_0
@@ -159,8 +162,20 @@ PS E:\codes\mysql-connector-cpp> echo $env:MYSQL_ROOT
 D:\Program Files\MySQL\MySQL Server 8.4
 ```
 
-之后运行`cmake_build_debug_on_windows.bat`和`cmake_build_release_on_windows.bat`即可在`out`目录下生成对应的链接库文件。然后定义`MYSQL_CONNECTOR_OUT_DIR`指向它：
-```bat
-PS E:\codes\mysql-connector-cpp> echo $env:MYSQL_CONNECTOR_OUT_DIR
-E:\codes\mysql-connector-cpp\out
+之后运行`cmake_build_debug_on_windows.bat`和`cmake_build_release_on_windows.bat`即可在`out`目录下生成对应的链接库文件。
+
+## Ubuntu 24.04
+安装 mysqlclient-dev：
+```shell
+apt install libmysqlclient-dev
 ```
+
+定义环境变量`MYSQL_LIB_DIR`和`MYSQL_INCLUDE_DIR`，例如：
+```shell
+SourDumplings@SD-PC1:~$ echo $MYSQL_INCLUDE_DIR
+/usr/include/mysql/
+SourDumplings@SD-PC1:~$ echo $MYSQL_LIB_DIR
+/usr/lib/x86_64-linux-gnu/
+```
+
+之后运行`cmake_build_debug_on_windows.sh`和`cmake_build_release_on_windows.sh`即可在`out`目录下生成对应的链接库文件。
