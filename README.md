@@ -148,7 +148,7 @@ catch (const char *ex)
 在安装好 MySQL Server 8 之后还需要做如下事情才能顺利使用本库。
 
 ## Windows
-在 Windows 下，需要先安装 MySQL Server、OpenSSL 和 BOOST，然后定义环境变量，分别指向 MySQL Server、OpenSSL、BOOST 对应目录：
+在 Windows 下，需要先安装 MySQL Server 8.4（先安装 OpenSSL 3.4 并在安装时选择将 dll 加入到系统路径中）、OpenSSL 和 BOOST，然后定义环境变量，分别指向 MySQL Server、OpenSSL、BOOST 对应目录：
 ```bat
 PS E:\codes\mysql-connector-cpp> echo $env:BOOST_ROOT
 D:\Boost\boost_1_87_0
